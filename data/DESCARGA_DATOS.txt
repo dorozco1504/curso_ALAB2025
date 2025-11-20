@@ -1,0 +1,11 @@
+Los datos del curso no están incluidos en este repositorio debido a su tamaño.
+Descárgalos aquí:
+
+https://drive.google.com/drive/folders/1CvfNbhMjmv1RM4ZMDmzBEJa2PsANkU-e?usp=share_link
+
+Después de descargarlos, colócalos en esta carpeta siguiendo la siguiente estructura:
+
+data/
+  ├── mxb_subset.bed
+  ├── mxb_subset.bim
+  ├── mxb_subset.fam
