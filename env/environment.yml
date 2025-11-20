@@ -1,0 +1,18 @@
+name: popgen
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - plink
+  - admixture
+  - r-base
+  - r-tidyverse
+  - r-devtools
+  - r-irkernel
+  - rstudio
+  - numpy
+  - pandas
+  - pip
+  - pip:
+      - pong
