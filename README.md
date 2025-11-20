@@ -17,6 +17,7 @@ Este repositorio contiene materiales, scripts y recursos para un curso práctico
 ## Estructura del repositorio
 
 - data/        # Datasets de ejemplo
+- env/         # Archivos para descargar y activar los programas utilizados en el curso
 - scripts/     # Scripts de analisis
 - results/     # Resultados generados
 - docs/        # Material de apoyo y slides
