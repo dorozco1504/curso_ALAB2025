@@ -23,12 +23,3 @@ Este repositorio contiene materiales, scripts y recursos para un curso práctico
 - docs/        # Material de apoyo y slides
 - README.md
 
-## Notas éticas
-
-Este material está diseñado para fines educativos. Si trabajas con datos genómicos de poblaciones humanas, considera:
-
-	•	Consentimiento informado y contexto histórico.
-  
-	•	Sensibilidad cultural y comunitaria.
-  
-	•	Interpretación no determinista ni biologizante.
