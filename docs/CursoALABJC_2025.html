@@ -1,0 +1,1800 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1, maximum-scale = 1">
+  <style id="style">
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Black.woff2') format('woff2'), /* Modern Browsers */
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Black.woff') format('woff'), /* Modern Browsers */
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/Lato-Black.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/MaterialIcons-Regular.woff2') format('woff2'),
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/MaterialIcons-Regular.woff') format('woff'),
+       url('file:///Applications/Boostnote.app/Contents/Resources/app/resources/fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-size: 16px;
+  padding: 15px;
+  font-family: helvetica, arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+body .katex-display > .katex {
+  white-space: nowrap;
+}
+body .katex {
+  white-space: initial;
+}
+body .katex .katex-html {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+}
+body .katex .mfrac>.vlist>span:nth-child(2) {
+  top: 0 !important;
+}
+body .katex-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  margin: -5px;
+  border-radius: 5px;
+}
+body .flowchart-error,
+body .sequence-error .chart-error {
+  background-color: #f2dede;
+  color: #a64444;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-box-pack: left;
+  -moz-box-pack: left;
+  -o-box-pack: left;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+}
+li label.taskListItem {
+  margin-left: -1.8em;
+}
+li label.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+li.taskListItem.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+div.math-rendered {
+  text-align: center;
+}
+.math-failed {
+  background-color: rgba(255,0,0,0.1);
+  color: #d90000;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+sup {
+  position: relative;
+  top: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+sub {
+  position: relative;
+  bottom: -0.4em;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+a {
+  color: #2bac8f;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin: -5px;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
+  transition: 0.1s;
+}
+a img {
+  vertical-align: sub;
+}
+a:hover {
+  color: #2eb899;
+  text-decoration: underline;
+  background-color: rgba(255,201,92,0.3);
+}
+a:visited {
+  color: #2bac8f;
+}
+hr {
+  border-top: none;
+  border-bottom: solid 1px #d0d0d0;
+  margin: 15px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 1em 0 1.5em;
+  line-height: 1.4;
+  font-weight: bold;
+  word-wrap: break-word;
+  padding: 0.2em 0 0.2em;
+}
+h1 {
+  font-size: 2.55em;
+  line-height: 1.2;
+  border-bottom: solid 1px #d0d0d0;
+}
+h1:first-child {
+  margin-top: 0;
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: solid 1px #d0d0d0;
+}
+h2:first-child {
+  margin-top: 0;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+h4 {
+  font-size: 1.25em;
+  line-height: 1.4;
+}
+h5 {
+  font-size: 1em;
+  line-height: 1.1;
+}
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+p {
+  line-height: 1.6em;
+  margin: 0 0 1em;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+img {
+  cursor: zoom-in;
+  max-width: 100%;
+}
+strong,
+b {
+  font-weight: bold;
+}
+em,
+i {
+  font-style: italic;
+}
+s,
+del,
+strike {
+  text-decoration: line-through;
+}
+u {
+  text-decoration: underline;
+}
+blockquote {
+  border-left: solid 4px #3fb399;
+  margin: 0 0 1em;
+  padding: 0 25px;
+}
+ul {
+  list-style-type: disc;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ul li {
+  display: list-item;
+}
+ul li.taskListItem {
+  list-style: none;
+}
+ul li.taskListItem>input {
+  margin-left: -1.6em;
+}
+ul li.taskListItem>p {
+  margin-left: -1.8em;
+}
+ul li p {
+  margin: 0;
+}
+ul>li>ul,
+ul>li>ol {
+  margin: 0;
+}
+ul>li>ul {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul {
+  list-style-type: square;
+}
+ol {
+  list-style-type: decimal;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+ol li {
+  display: list-item;
+}
+ol li p {
+  margin: 0;
+}
+ol>li>ul,
+ol>li>ol {
+  margin: 0;
+}
+code {
+  padding: 0.2em 0.4em;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-right: 2px;
+}
+pre {
+  padding: 0.5rem !important;
+  border: solid 1px #d1d1d1;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  line-height: 1.4em;
+}
+pre code {
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+pre.CodeMirror {
+  height: initial;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.CodeMirror>code {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow-x: auto;
+}
+pre.mermaid svg {
+  max-width: 100% !important;
+}
+pre>span.filename {
+  margin: -0.5rem 100% 0.5rem -0.5rem;
+  padding: 0.125rem 0.375rem;
+  background-color: #777;
+  color: #fff;
+}
+pre>span.filename:empty {
+  display: none;
+}
+pre>span.lineNumber {
+  display: none;
+  font-size: 1em;
+  padding: 0.5rem 0;
+  margin: -0.5rem 0.5rem -0.5rem -0.5rem;
+  border-right: 1px solid;
+  text-align: right;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+pre>span.lineNumber.CodeMirror-gutters {
+  position: initial;
+  top: initial;
+  left: initial;
+  min-height: 0 !important;
+}
+pre>span.lineNumber>span {
+  display: block;
+  padding: 0 0.5em 0;
+}
+table {
+  display: block;
+  width: 100%;
+  margin: 0 0 1em;
+  overflow-x: auto;
+}
+table thead tr {
+  background-color: #fff;
+}
+table thead th {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 1px 0 2px 1px;
+  border-color: #d0d0d0;
+  font-weight: bold;
+}
+table thead th:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+table tbody tr:nth-child(2n + 1) {
+  background-color: #f9f9f9;
+}
+table tbody tr:nth-child(2n) {
+  background-color: #fff;
+}
+table tbody td {
+  border-style: solid;
+  padding: 6px 13px;
+  line-height: 1.6;
+  border-width: 0 0 1px 1px;
+  border-color: #d0d0d0;
+}
+table tbody td:last-child {
+  border-right: solid 1px #d0d0d0;
+}
+kbd {
+  background-color: #fafbfc;
+  border: solid 1px #d0d0d0;
+  border-bottom-color: #888;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 #959da5;
+  box-shadow: inset 0 -1px 0 #959da5;
+  display: inline-block;
+  font-size: 0.8em;
+  line-height: 1;
+  padding: 3px 5px;
+}
+.admonition.note,
+.admonition.hint,
+.admonition.danger,
+.admonition.caution,
+.admonition.error,
+.admonition.question,
+.admonition.quote,
+.admonition.abstract,
+.admonition.attention {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: 0.4rem solid #448aff;
+  border-radius: 0.2rem;
+  overflow: auto;
+}
+html .admonition>:last-child {
+  margin-bottom: 1.2rem;
+}
+.admonition .admonition {
+  margin: 1em 0;
+}
+.admonition p {
+  margin-top: 0.5em;
+}
+.admonition.note>.admonition-title:before,
+.admonition.hint>.admonition-title:before,
+.admonition.danger>.admonition-title:before,
+.admonition.caution>.admonition-title:before,
+.admonition.error>.admonition-title:before,
+.admonition.question>.admonition-title:before,
+.admonition.quote>.admonition-title:before,
+.admonition.abstract>.admonition-title:before,
+.admonition.attention>.admonition-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+/* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+/* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+/* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.admonition.note>.admonition-title,
+.admonition.hint>.admonition-title,
+.admonition.danger>.admonition-title,
+.admonition.caution>.admonition-title,
+.admonition.error>.admonition-title,
+.admonition.question>.admonition-title,
+.admonition.quote>.admonition-title,
+.admonition.abstract>.admonition-title,
+.admonition.attention>.admonition-title {
+  margin: 0 -1.2rem;
+  padding: 0.8rem 1.2rem 0.8rem 4rem;
+  border-bottom: 0.1rem solid rgba(68,138,255,0.1);
+  background-color: rgba(68,138,255,0.1);
+  font-weight: 700;
+}
+.admonition>.admonition-title:last-child {
+  margin-bottom: 0;
+}
+.admonition.note {
+  border-left-color: #0288d1;
+}
+.admonition.note>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(2,136,209,0.2);
+  background-color: rgba(2,136,209,0.2);
+}
+.admonition.note>.admonition-title:before {
+  color: #0288d1;
+  content: "note";
+}
+.admonition.hint {
+  border-left-color: #009688;
+}
+.admonition.hint>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,150,136,0.2);
+  background-color: rgba(0,150,136,0.2);
+}
+.admonition.hint>.admonition-title:before {
+  color: #009688;
+  content: "info_outline";
+}
+.admonition.danger {
+  border-left-color: #c2185b;
+}
+.admonition.danger>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(194,24,91,0.2);
+  background-color: rgba(194,24,91,0.2);
+}
+.admonition.danger>.admonition-title:before {
+  color: #c2185b;
+  content: "block";
+}
+.admonition.caution {
+  border-left-color: #ffa726;
+}
+.admonition.caution>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(255,167,38,0.2);
+  background-color: rgba(255,167,38,0.2);
+}
+.admonition.caution>.admonition-title:before {
+  color: #ffa726;
+  content: "warning";
+}
+.admonition.error {
+  border-left-color: #d32f2f;
+}
+.admonition.error>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(211,47,47,0.2);
+  background-color: rgba(211,47,47,0.2);
+}
+.admonition.error>.admonition-title:before {
+  color: #d32f2f;
+  content: "error_outline";
+}
+.admonition.question {
+  border-left-color: #64dd17;
+}
+.admonition.question>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(100,221,23,0.2);
+  background-color: rgba(100,221,23,0.2);
+}
+.admonition.question>.admonition-title:before {
+  color: #64dd17;
+  content: "help_outline";
+}
+.admonition.quote {
+  border-left-color: #9e9e9e;
+}
+.admonition.quote>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(158,158,158,0.2);
+  background-color: rgba(158,158,158,0.2);
+}
+.admonition.quote>.admonition-title:before {
+  color: #9e9e9e;
+  content: "format_quote";
+}
+.admonition.abstract {
+  border-left-color: #00b0ff;
+}
+.admonition.abstract>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(0,176,255,0.2);
+  background-color: rgba(0,176,255,0.2);
+}
+.admonition.abstract>.admonition-title:before {
+  color: #00b0ff;
+  content: "subject";
+}
+.admonition.attention {
+  border-left-color: #455a64;
+}
+.admonition.attention>.admonition-title {
+  border-bottom-color: 0.1rem solid rgba(69,90,100,0.2);
+  background-color: rgba(69,90,100,0.2);
+}
+.admonition.attention>.admonition-title:before {
+  color: #455a64;
+  content: "priority_high";
+}
+dl {
+  margin: 2rem 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 100%;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -o-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  border-bottom: 1px solid #d0d0d0;
+  background-color: #fff;
+}
+dt {
+  border-top: 1px solid #d0d0d0;
+  font-weight: bold;
+  text-align: right;
+  overflow: hidden;
+  -webkit-flex-basis: 20%;
+  flex-basis: 20%;
+  padding: 0.4rem 0.9rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd {
+  border-top: 1px solid #d0d0d0;
+  -webkit-flex-basis: 80%;
+  flex-basis: 80%;
+  padding: 0.4rem 0.9rem;
+  min-height: 2.5rem;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+dd + dd {
+  margin-left: 20%;
+}
+pre.fence {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+pre.fence .chart,
+pre.fence .flowchart,
+pre.fence .mermaid,
+pre.fence .sequence {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #fff;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+pre.fence .chart canvas,
+pre.fence .flowchart canvas,
+pre.fence .mermaid canvas,
+pre.fence .sequence canvas,
+pre.fence .chart svg,
+pre.fence .flowchart svg,
+pre.fence .mermaid svg,
+pre.fence .sequence svg {
+  max-width: 100% !important;
+}
+pre.fence .chart svg[ratio],
+pre.fence .flowchart svg[ratio],
+pre.fence .mermaid svg[ratio],
+pre.fence .sequence svg[ratio] {
+  width: 100%;
+}
+pre.fence .gallery {
+  width: 100%;
+  height: 50vh;
+}
+pre.fence .gallery .carousel .carousel-main img {
+  min-width: auto;
+  max-width: 100%;
+  min-height: auto;
+  max-height: 100%;
+}
+pre.fence .gallery .carousel .carousel-footer::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+pre.fence .gallery .carousel .carousel-main,
+pre.fence .gallery .carousel .carousel-footer {
+  background-color: #fff;
+}
+pre.fence .gallery .carousel .prev,
+pre.fence .gallery .carousel .next {
+  color: #333;
+  background-color: rgba(0,0,0,0.3);
+}
+.markdownIt-TOC-wrapper {
+  list-style: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-left: 15px;
+  z-index: 1000;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  -moz-transition: -moz-transform 0.2s ease-in-out;
+  -o-transition: -o-transform 0.2s ease-in-out;
+  -ms-transition: -ms-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.markdownIt-TOC-wrapper .markdownIt-TOC {
+  display: block;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  padding-left: 38px;
+}
+.markdownIt-TOC-wrapper,
+.markdownIt-TOC-wrapper:before {
+  background-color: #2c3033;
+  color: #ddd;
+}
+.markdownIt-TOC-wrapper:hover {
+  -webkit-transform: translateX(-15px);
+  -moz-transform: translateX(-15px);
+  -o-transform: translateX(-15px);
+  -ms-transform: translateX(-15px);
+  transform: translateX(-15px);
+}
+.markdownIt-TOC-wrapper:before {
+  content: 'TOC';
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  top: 60px;
+  left: -29px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -o-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+body[data-theme="dark"] {
+  color: #f9f9f9;
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] a:hover {
+  background-color: rgba(90,214,186,0.2) !important;
+}
+body[data-theme="dark"] code {
+  color: #ea6730;
+  border-color: #3d4450;
+  background-color: #363a3e;
+}
+body[data-theme="dark"] pre {
+  border-color: #474f5c;
+}
+body[data-theme="dark"] pre code {
+  background-color: transparent;
+}
+body[data-theme="dark"] label.taskListItem {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table thead tr {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table thead th {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n + 1) {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] table tbody tr:nth-child(2n) {
+  background-color: #282b2e;
+}
+body[data-theme="dark"] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme="dark"] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme="dark"] kbd {
+  background-color: #444b59;
+  color: #f9f9f9;
+}
+body[data-theme="dark"] dl {
+  border-color: #444b59;
+  background-color: #282b2e;
+}
+body[data-theme="dark"] dt {
+  border-color: #444b59;
+}
+body[data-theme="dark"] dd {
+  border-color: #444b59;
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .carousel-main,
+body[data-theme="dark"] pre.fence .gallery .carousel-footer {
+  background-color: #2c3033;
+}
+body[data-theme="dark"] pre.fence .gallery .prev,
+body[data-theme="dark"] pre.fence .gallery .next {
+  color: #ddd;
+  background-color: #3a404c;
+}
+body[data-theme="dark"] .markdownIt-TOC-wrapper,
+body[data-theme="dark"] .markdownIt-TOC-wrapper:before {
+  background-color: #1c1f25;
+  color: #f9f9f9;
+}
+body[data-theme=solarized-dark] {
+  color: #93a1a1;
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table thead tr {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n + 1) {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] table tbody tr:nth-child(2n) {
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=solarized-dark] kbd {
+  background-color: #1e2127;
+  color: #93a1a1;
+}
+body[data-theme=solarized-dark] dl {
+  border-color: #444b59;
+  background-color: #06313b;
+}
+body[data-theme=solarized-dark] dt {
+  border-color: #444b59;
+}
+body[data-theme=solarized-dark] dd {
+  border-color: #444b59;
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-main,
+body[data-theme=solarized-dark] pre.fence .gallery .carousel-footer {
+  background-color: #073642;
+}
+body[data-theme=solarized-dark] pre.fence .gallery .prev,
+body[data-theme=solarized-dark] pre.fence .gallery .next {
+  color: #93a1a1;
+  background-color: #002b36;
+}
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper,
+body[data-theme=solarized-dark] .markdownIt-TOC-wrapper:before {
+  background-color: #062e38;
+  color: #f9f9f9;
+}
+body[data-theme=dracula] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] table thead tr {
+  background-color: #242631;
+}
+body[data-theme=dracula] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n + 1) {
+  background-color: #282a36;
+}
+body[data-theme=dracula] table tbody tr:nth-child(2n) {
+  background-color: #242631;
+}
+body[data-theme=dracula] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=dracula] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=dracula] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=dracula] dl {
+  border-color: #444b59;
+  background-color: #242631;
+}
+body[data-theme=dracula] dt {
+  border-color: #444b59;
+}
+body[data-theme=dracula] dd {
+  border-color: #444b59;
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .carousel-main,
+body[data-theme=dracula] pre.fence .gallery .carousel-footer {
+  background-color: #282a36;
+}
+body[data-theme=dracula] pre.fence .gallery .prev,
+body[data-theme=dracula] pre.fence .gallery .next {
+  color: #f8f8f2;
+  background-color: #44475a;
+}
+body[data-theme=dracula] .markdownIt-TOC-wrapper,
+body[data-theme=dracula] .markdownIt-TOC-wrapper:before {
+  background-color: #22242e;
+  color: #f9f9f9;
+}
+body[data-theme=monokai] {
+  color: #f8f8f2;
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] table thead tr {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n + 1) {
+  background-color: #272822;
+}
+body[data-theme=monokai] table tbody tr:nth-child(2n) {
+  background-color: #23241f;
+}
+body[data-theme=monokai] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=monokai] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=monokai] kbd {
+  background-color: #1e2127;
+  color: #f8f8f2;
+}
+body[data-theme=monokai] dl {
+  border-color: #444b59;
+  background-color: #23241f;
+}
+body[data-theme=monokai] dt {
+  border-color: #444b59;
+}
+body[data-theme=monokai] dd {
+  border-color: #444b59;
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .carousel-main,
+body[data-theme=monokai] pre.fence .gallery .carousel-footer {
+  background-color: #272822;
+}
+body[data-theme=monokai] pre.fence .gallery .prev,
+body[data-theme=monokai] pre.fence .gallery .next {
+  color: #fff;
+  background-color: #373831;
+}
+body[data-theme=monokai] .markdownIt-TOC-wrapper,
+body[data-theme=monokai] .markdownIt-TOC-wrapper:before {
+  background-color: #21221d;
+  color: #f9f9f9;
+}
+body[data-theme=nord] {
+  color: #d8dee9;
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] table thead tr {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=nord] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n + 1) {
+  background-color: #2e3440;
+}
+body[data-theme=nord] table tbody tr:nth-child(2n) {
+  background-color: #292f3a;
+}
+body[data-theme=nord] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=nord] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=nord] kbd {
+  background-color: #d8dee9;
+  color: #2e3440;
+}
+body[data-theme=nord] dl {
+  border-color: #444b59;
+  background-color: #292f3a;
+}
+body[data-theme=nord] dt {
+  border-color: #444b59;
+}
+body[data-theme=nord] dd {
+  border-color: #444b59;
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .carousel-main,
+body[data-theme=nord] pre.fence .gallery .carousel-footer {
+  background-color: #2e3440;
+}
+body[data-theme=nord] pre.fence .gallery .prev,
+body[data-theme=nord] pre.fence .gallery .next {
+  color: #d8dee9;
+  background-color: #434c5e;
+}
+body[data-theme=nord] .markdownIt-TOC-wrapper,
+body[data-theme=nord] .markdownIt-TOC-wrapper:before {
+  background-color: #272c36;
+  color: #f9f9f9;
+}
+body[data-theme=vulcan] {
+  color: #999;
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] table thead tr {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table thead th {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table thead th:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n + 1) {
+  background-color: #161719;
+}
+body[data-theme=vulcan] table tbody tr:nth-child(2n) {
+  background-color: #141517;
+}
+body[data-theme=vulcan] table tbody td {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] table tbody td:last-child {
+  border-right: solid 1px #444b59;
+}
+body[data-theme=vulcan] kbd {
+  background-color: #ccc;
+  color: #161719;
+}
+body[data-theme=vulcan] dl {
+  border-color: #444b59;
+  background-color: #141517;
+}
+body[data-theme=vulcan] dt {
+  border-color: #444b59;
+}
+body[data-theme=vulcan] dd {
+  border-color: #444b59;
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .carousel-main,
+body[data-theme=vulcan] pre.fence .gallery .carousel-footer {
+  background-color: #161719;
+}
+body[data-theme=vulcan] pre.fence .gallery .prev,
+body[data-theme=vulcan] pre.fence .gallery .next {
+  color: #a3a8ae;
+  background-color: #282a2e;
+}
+body[data-theme=vulcan] .markdownIt-TOC-wrapper,
+body[data-theme=vulcan] .markdownIt-TOC-wrapper:before {
+  background-color: #131415;
+  color: #f9f9f9;
+}
+/*# sourceMappingURL=browser/components/markdown.css.map */
+
+body {
+  font-family: 'Lato','helvetica','arial','sans-serif';
+  font-size: 16px;
+  false
+  undefined
+}
+@media print {
+  body {
+    padding-bottom: initial;
+  }
+}
+
+code {
+  font-family: 'Monaco','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+  background-color: rgba(0,0,0,0.04);
+  text-align: left;
+  direction: ltr;
+}
+
+p code,
+li code,
+td code
+{
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+[data-theme="default"] p code,
+[data-theme="default"] li code,
+[data-theme="default"] td code
+{
+  background-color: #F4F4F4;
+  border-color: #d9d9d9;
+  color: inherit;
+}
+[data-theme="white"] p code,
+[data-theme="white"] li code,
+[data-theme="white"] td code
+{
+  background-color: #F4F4F4;
+  border-color: #d9d9d9;
+  color: inherit;
+}
+[data-theme="dark"] p code,
+[data-theme="dark"] li code,
+[data-theme="dark"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+[data-theme="dracula"] p code,
+[data-theme="dracula"] li code,
+[data-theme="dracula"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+[data-theme="monokai"] p code,
+[data-theme="monokai"] li code,
+[data-theme="monokai"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+[data-theme="nord"] p code,
+[data-theme="nord"] li code,
+[data-theme="nord"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+[data-theme="solarized-dark"] p code,
+[data-theme="solarized-dark"] li code,
+[data-theme="solarized-dark"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+[data-theme="vulcan"] p code,
+[data-theme="vulcan"] li code,
+[data-theme="vulcan"] td code
+{
+  background-color: #444444;
+  border-color: #555;
+  color: #FFFFFF;
+}
+
+.lineNumber {
+  display: block !important;
+  font-family: 'Monaco','Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro','monospace';
+}
+
+.clipboardButton {
+  color: rgba(147,147,149,0.8);;
+  fill: rgba(147,147,149,1);;
+  border-radius: 50%;
+  margin: 0px 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.clipboardButton:hover {
+  transition: 0.2s;
+  color: #939395;
+  fill: #939395;
+  background-color: rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  border: none;
+}
+
+h1 {
+  padding-bottom: 4px;
+  margin: 1em 0 8px;
+}
+
+h2 {
+  padding-bottom: 0.2em;
+  margin: 1em 0 0.37em;
+}
+
+body p {
+  white-space: normal;
+}
+
+@media print {
+  body[data-theme="solarized-dark"] {
+    color: #000;
+    background-color: #fff;
+  }
+  .clipboardButton {
+    display: none
+  }
+}
+
+
+</style>
+  <link rel="stylesheet" href="css/darcula.css">
+<link rel="stylesheet" href="css/katex.min.css">
+<link rel="stylesheet" href="css/codemirror.css">
+<link rel="stylesheet" href="css/main.min.css">
+  <script src="js/lodash.min.js"></script>
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/mode/meta.js"></script>
+<script src="js/codemirror/addon/mode/loadmode.js"></script>
+<script src="js/codemirror/addon/runmode/runmode.js"></script>
+
+  <script>
+function decodeEntities (text) {
+  var entities = [
+    ['apos', '\''],
+    ['amp', '&'],
+    ['lt', '<'],
+    ['gt', '>'],
+    ['#63', '\?'],
+    ['#36', '\$']
+  ]
+
+  for (var i = 0, max = entities.length; i < max; ++i) {
+    text = text.replace(new RegExp(`&${entities[i][0]};`, 'g'), entities[i][1])
+  }
+
+  return text
+}
+CodeMirror.modeURL = 'https://cdn.jsdelivr.net/npm/codemirror@5.40.2/mode/%N/%N.js';
+
+function displayCodeBlocks() {
+  _.forEach(
+    document.querySelectorAll('.code code'),
+    el => {
+      el.parentNode.className += ' cm-s-darcula'
+      let syntax = CodeMirror.findModeByName(el.className)
+      if (syntax == null) syntax = CodeMirror.findModeByName('Plain Text')
+      CodeMirror.requireMode(syntax.mode, () => {
+        const content = decodeEntities(el.innerHTML)
+        el.innerHTML = ''
+        CodeMirror.runMode(content, syntax.mime, el, {
+          tabSize: 2
+        })
+      })
+    }
+  )
+}
+
+document.addEventListener('DOMContentLoaded', displayCodeBlocks);
+</script>
+</head>
+<body data-theme="solarized-dark">
+<h1 id="Curso-ALAB-JC-2025" data-line="0">Curso ALAB JC 2025</h1>
+<h3 id="Recursos-de-consulta" data-line="2">Recursos de consulta</h3>
+<ul>
+<li data-line="3">Presentación del curso: <a href="https://docs.google.com/presentation/d/1R2aMAzVmKdMf1yq4BMBx-PXvQX6_cM0Ezf8abr3Ecv0/edit?usp=sharing">Curso MexVar ALAB - Juan Comas 2025 - Presentacion de Google</a></li>
+<li data-line="4">Repositorio guía: <a href="https://github.com/dorozco1504/curso_ALAB2025">GitHub - Curso_ALAB2025: Introducción</a></li>
+</ul>
+<h2 id="%F0%9F%93%8C-Objetivo-1-an%C3%A1lisis-de-calidad-a-un-dataset-de-genotipado" data-line="6">📌 Objetivo 1: análisis de calidad a un dataset de genotipado</h2>
+<pre class="code CodeMirror" data-line="9">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span><span class="CodeMirror-linenumber">4</span><span class="CodeMirror-linenumber">5</span><span class="CodeMirror-linenumber">6</span><span class="CodeMirror-linenumber">7</span><span class="CodeMirror-linenumber">8</span><span class="CodeMirror-linenumber">9</span><span class="CodeMirror-linenumber">10</span><span class="CodeMirror-linenumber">11</span><span class="CodeMirror-linenumber">12</span><span class="CodeMirror-linenumber">13</span><span class="CodeMirror-linenumber">14</span><span class="CodeMirror-linenumber">15</span><span class="CodeMirror-linenumber">16</span><span class="CodeMirror-linenumber">17</span><span class="CodeMirror-linenumber">18</span><span class="CodeMirror-linenumber">19</span><span class="CodeMirror-linenumber">20</span><span class="CodeMirror-linenumber">21</span><span class="CodeMirror-linenumber">22</span><span class="CodeMirror-linenumber">23</span><span class="CodeMirror-linenumber">24</span><span class="CodeMirror-linenumber">25</span><span class="CodeMirror-linenumber">26</span><span class="CodeMirror-linenumber">27</span><span class="CodeMirror-linenumber">28</span><span class="CodeMirror-linenumber">29</span><span class="CodeMirror-linenumber">30</span><span class="CodeMirror-linenumber">31</span><span class="CodeMirror-linenumber">32</span><span class="CodeMirror-linenumber">33</span><span class="CodeMirror-linenumber">34</span><span class="CodeMirror-linenumber">35</span><span class="CodeMirror-linenumber">36</span><span class="CodeMirror-linenumber">37</span><span class="CodeMirror-linenumber">38</span><span class="CodeMirror-linenumber">39</span><span class="CodeMirror-linenumber">40</span><span class="CodeMirror-linenumber">41</span><span class="CodeMirror-linenumber">42</span><span class="CodeMirror-linenumber">43</span><span class="CodeMirror-linenumber">44</span><span class="CodeMirror-linenumber">45</span><span class="CodeMirror-linenumber">46</span><span class="CodeMirror-linenumber">47</span><span class="CodeMirror-linenumber">48</span><span class="CodeMirror-linenumber">49</span><span class="CodeMirror-linenumber">50</span><span class="CodeMirror-linenumber">51</span><span class="CodeMirror-linenumber">52</span><span class="CodeMirror-linenumber">53</span><span class="CodeMirror-linenumber">54</span><span class="CodeMirror-linenumber">55</span><span class="CodeMirror-linenumber">56</span><span class="CodeMirror-linenumber">57</span><span class="CodeMirror-linenumber">58</span><span class="CodeMirror-linenumber">59</span><span class="CodeMirror-linenumber">60</span><span class="CodeMirror-linenumber">61</span><span class="CodeMirror-linenumber">62</span><span class="CodeMirror-linenumber">63</span><span class="CodeMirror-linenumber">64</span><span class="CodeMirror-linenumber">65</span><span class="CodeMirror-linenumber">66</span><span class="CodeMirror-linenumber">67</span><span class="CodeMirror-linenumber">68</span><span class="CodeMirror-linenumber">69</span><span class="CodeMirror-linenumber">70</span><span class="CodeMirror-linenumber">71</span><span class="CodeMirror-linenumber">72</span><span class="CodeMirror-linenumber">73</span><span class="CodeMirror-linenumber">74</span><span class="CodeMirror-linenumber">75</span><span class="CodeMirror-linenumber">76</span><span class="CodeMirror-linenumber">77</span><span class="CodeMirror-linenumber">78</span><span class="CodeMirror-linenumber">79</span><span class="CodeMirror-linenumber">80</span><span class="CodeMirror-linenumber">81</span><span class="CodeMirror-linenumber">82</span><span class="CodeMirror-linenumber">83</span><span class="CodeMirror-linenumber">84</span><span class="CodeMirror-linenumber">85</span><span class="CodeMirror-linenumber">86</span><span class="CodeMirror-linenumber">87</span><span class="CodeMirror-linenumber">88</span><span class="CodeMirror-linenumber">89</span><span class="CodeMirror-linenumber">90</span><span class="CodeMirror-linenumber">91</span><span class="CodeMirror-linenumber">92</span><span class="CodeMirror-linenumber">93</span><span class="CodeMirror-linenumber">94</span><span class="CodeMirror-linenumber">95</span><span class="CodeMirror-linenumber">96</span><span class="CodeMirror-linenumber">97</span><span class="CodeMirror-linenumber">98</span><span class="CodeMirror-linenumber">99</span><span class="CodeMirror-linenumber">100</span><span class="CodeMirror-linenumber">101</span><span class="CodeMirror-linenumber">102</span><span class="CodeMirror-linenumber">103</span><span class="CodeMirror-linenumber">104</span><span class="CodeMirror-linenumber">105</span><span class="CodeMirror-linenumber">106</span><span class="CodeMirror-linenumber">107</span><span class="CodeMirror-linenumber">108</span><span class="CodeMirror-linenumber">109</span><span class="CodeMirror-linenumber">110</span><span class="CodeMirror-linenumber">111</span><span class="CodeMirror-linenumber">112</span><span class="CodeMirror-linenumber">113</span><span class="CodeMirror-linenumber">114</span><span class="CodeMirror-linenumber">115</span><span class="CodeMirror-linenumber">116</span><span class="CodeMirror-linenumber">117</span><span class="CodeMirror-linenumber">118</span><span class="CodeMirror-linenumber">119</span><span class="CodeMirror-linenumber">120</span><span class="CodeMirror-linenumber">121</span><span class="CodeMirror-linenumber">122</span><span class="CodeMirror-linenumber">123</span><span class="CodeMirror-linenumber">124</span><span class="CodeMirror-linenumber">125</span><span class="CodeMirror-linenumber">126</span><span class="CodeMirror-linenumber">127</span><span class="CodeMirror-linenumber">128</span><span class="CodeMirror-linenumber">129</span><span class="CodeMirror-linenumber">130</span><span class="CodeMirror-linenumber">131</span><span class="CodeMirror-linenumber">132</span><span class="CodeMirror-linenumber">133</span></span>
+          <code class="sh">#Abrir aplicación Terminal y teclear
+conda activate popgen
+##Movernos al directorio donde están los datos 
+
+cd QC_data
+
+# Muestra las primeras 10 líneas del archivo .bim
+# .bim contiene la información por SNP: CHR, ID, POS_GENÉTICA, POS_FÍSICA, A1, A2
+head poptest.bim
+
+# .fam tiene 6 columnas: FID IID PADRE MADRE SEXO FENOTIPO
+head poptest.fam
+
+# Cuenta cuántas filas tiene .fam = número de muestras
+wc -l poptest.fam
+
+# Cuenta filas en .bim = número de variantes
+wc -l poptest.bim
+
+
+
+##############################
+# 1. Quitar SNPs problemáticos
+##############################
+
+# Buscar variantes duplicadas (mismo ID/posición) en el archivo binario poptest
+# --bfile poptest   : usa poptest.bed/.bim/.fam
+# --list-duplicate-vars : detecta variantes duplicadas
+# ids-only suppress-first : solo imprime los IDs y marca para eliminar la PRIMERA copia
+
+plink --bfile poptest --list-duplicate-vars ids-only suppress-first
+
+# Contar cuántas variantes duplicadas se encontraron
+wc -l plink.dupvar 
+
+# Eliminar las variantes duplicadas del dataset original y guardar como poptest.t1
+# --exclude plink.dupvar : lista de SNPs a excluir
+# --make-bed             : genera nuevos .bed/.bim/.fam
+# --out poptest.t1       : prefijo del nuevo archivo
+plink --bfile poptest --exclude plink.dupvar --make-bed --out poptest.t1
+
+# Identificar INDELs (inserciones/deleciones) en el archivo .bim
+# En el .bim, las columnas 5 y 6 son los alelos.
+# Aquí buscamos alelos con I o D (I = insertion, D = deletion)
+# y nos quedamos con la columna 2 (ID del SNP) para hacer una lista.
+awk '$5 ~/I/ || $5 ~/D/ || $6 ~/I/ || $6 ~/D/ ' poptest.t1.bim | cut -f2 &gt; indels.txt
+
+# Contar cuántos INDELs se van a eliminar
+wc -l indels.txt 
+
+# Eliminar INDELs del dataset y guardar como poptest.t2
+plink --bfile poptest.t1 --exclude indels.txt --make-bed --out poptest.t2
+
+####################################
+# 2. Missingness y heterocigosidad
+####################################
+
+# Calcular missingness (por individuo y por SNP) para poptest.t2
+# Esto genera archivos .imiss (por individuo) y .lmiss (por SNP)
+plink --bfile poptest.t2 --missing --out poptest.t2
+
+# Calcular tasa de heterocigosidad por individuo
+# Esto genera archivo .het
+plink --bfile poptest.t2 --het --out poptest.t2
+
+# Crear carpeta para guardar los gráficos de QC
+mkdir QCplots
+
+# Correr script de R que hace las gráficas de QC
+# Argumentos: &lt;prefix PLINK&gt; &lt;etapa&gt; &lt;nombre del dataset&gt;
+# Aquí: usamos poptest.t2, etapa &quot;pre&quot; (antes de filtros fuertes) y nombre &quot;Test&quot;
+Rscript missingness_qcplots_v3.R poptest.t2 pre Test
+
+####Enlistar los plots que se generaron
+
+ls QCplots/
+
+##################################
+# 3. Relacionados (IBD/parentesco)
+##################################
+
+# Calcula matriz de IBD (identical by descent) entre pares de individuos
+# Esto estima cuánto material genético comparte cada par → útil para detectar parientes.
+plink --bfile poptest.t2 --genome --out poptest.t2
+
+# Este script en Perl toma el archivo poptest.t2.genome
+# y aplica los criterios del paper de Anderson et al. (2010)
+# para detectar individuos con parentesco cercano (e.g., PI_HAT &gt; 0.5)
+# El resultado es un archivo fail-IBD-QC.txt con individuos a eliminar.
+perl run-IBD-QC_mod82316.pl poptest.t2
+
+# Contar cuántos individuos serán removidos por ser parientes cercanos
+wc -l fail-IBD-QC.txt 
+
+# Remover los individuos identificados como parientes
+# Esto ayuda a evitar sesgos en PCA, ADMIXTURE y estimaciones de diversidad.
+plink --bfile poptest.t2 --remove fail-IBD-QC.txt --make-bed --out poptest.t3
+
+########################################
+# 4. Filtros estándar de calidad (QC)
+########################################
+
+# Aplicar filtros de:
+# --mind 0.1 : elimina individuos con &gt;10% de genotipos faltantes
+# --geno 0.05: elimina SNPs con &gt;5% de genotipos faltantes
+plink --bfile poptest.t3 --mind 0.1 --geno 0.05 --make-bed --out poptest.t4
+
+# Filtrar SNPs que violan Hardy-Weinberg:
+# --hwe 1e-5 : elimina SNPs con p(HWE) &lt; 1x10^-5 (posibles errores de genotipado)
+plink --bfile poptest.t4 --hwe 1e-5 --make-bed --out poptest.final 
+
+###############################################
+# 5. Quedarse solo con autosomas y revisar QC
+###############################################
+
+# Conservar solo cromosomas autosómicos (1–22)
+plink --bfile poptest.final --autosome --make-bed --out poptest.final.autosomes
+
+# Recalcular heterocigosidad en autosomas
+plink --bfile poptest.final.autosomes --het --out poptest.final.autosomes
+
+# Recalcular missingness en autosomas
+plink --bfile poptest.final.autosomes --missing --out poptest.final.autosomes
+
+# Correr de nuevo el script de R para hacer las gráficas de QC
+# Ahora etapa &quot;Post&quot; (después de filtros) y nombre &quot;Test&quot;
+Rscript missingness_qcplots_v3.R poptest.final.autosomes Post Test
+
+####Enlistar los plots que se generaron
+
+ls QCplots/
+
+
+</code>
+        </pre><h2 id="%F0%9F%93%8C-Objetivo-2-an%C3%A1lisis-de-ancestr%C3%ADa-global-con-PCA-y-ADMIXTURE" data-line="144">📌 Objetivo 2: análisis de ancestría global con PCA y ADMIXTURE</h2>
+<h4 id="PCA-con-PLINK--Metadata-externa-tsv" data-line="146">PCA con PLINK + Metadata externa (.tsv)</h4>
+<pre class="code CodeMirror" data-line="148">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span><span class="CodeMirror-linenumber">4</span><span class="CodeMirror-linenumber">5</span><span class="CodeMirror-linenumber">6</span><span class="CodeMirror-linenumber">7</span></span>
+          <code class="sh"># Movernos al directorio principal y movernos al directorio con datos a analizar
+cd ~
+cd data
+# Ver las primeras filas de la tabla de metadata (TSV)
+# Esto te permite revisar qué columnas existen, cómo se llaman y si los IDs
+# de individuos coinciden con los del archivo PLINK (.fam / .eigenvec)
+head metadata_subset.tsv
+</code>
+        </pre><h4 id="%F0%9F%A7%ACCorrer-PCA-en-PLINK-antes-de-graficar-en-R" data-line="158">🧬Correr PCA en PLINK (antes de graficar en R)</h4>
+<pre class="code CodeMirror" data-line="159">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span><span class="CodeMirror-linenumber">4</span><span class="CodeMirror-linenumber">5</span><span class="CodeMirror-linenumber">6</span><span class="CodeMirror-linenumber">7</span><span class="CodeMirror-linenumber">8</span><span class="CodeMirror-linenumber">9</span><span class="CodeMirror-linenumber">10</span><span class="CodeMirror-linenumber">11</span><span class="CodeMirror-linenumber">12</span><span class="CodeMirror-linenumber">13</span><span class="CodeMirror-linenumber">14</span><span class="CodeMirror-linenumber">15</span><span class="CodeMirror-linenumber">16</span><span class="CodeMirror-linenumber">17</span><span class="CodeMirror-linenumber">18</span><span class="CodeMirror-linenumber">19</span><span class="CodeMirror-linenumber">20</span><span class="CodeMirror-linenumber">21</span><span class="CodeMirror-linenumber">22</span><span class="CodeMirror-linenumber">23</span><span class="CodeMirror-linenumber">24</span><span class="CodeMirror-linenumber">25</span><span class="CodeMirror-linenumber">26</span><span class="CodeMirror-linenumber">27</span><span class="CodeMirror-linenumber">28</span><span class="CodeMirror-linenumber">29</span><span class="CodeMirror-linenumber">30</span><span class="CodeMirror-linenumber">31</span><span class="CodeMirror-linenumber">32</span><span class="CodeMirror-linenumber">33</span><span class="CodeMirror-linenumber">34</span><span class="CodeMirror-linenumber">35</span></span>
+          <code class="sh">
+###########################################
+# 1. LD pruning antes del PCA
+###########################################
+
+# Paso 1: Identificar SNPs independientes en términos de LD
+# --bfile mxb_subset  : dataset de interes con el biobanco y poblacionescontinentales
+# --indep-pairwise 50 10 0.1       : ventana de 50 SNPs, se mueve de 10 en 10,
+#                                    y elimina SNPs con r^2 &gt; 0.1 (alto LD)
+# --out mxb_subset_globanc                 : prefijo para los archivos .prune.in / .prune.out
+plink --bfile mxb_subset \
+      --indep-pairwise 50 10 0.1 \
+      --out mxb_subset_globanc
+
+# Paso 2: Crear un nuevo dataset que solo contenga los SNPs “pruned”
+# (más independientes entre sí, ideal para PCA)
+# --extract mxb_subset_globanc.prune.in    : lista de SNPs que se conservan
+# --make-bed                        : genera nuevos .bed/.bim/.fam
+# --out mxb_subset_globanc.LDpruned : nombre del nuevo dataset reducido
+plink --bfile mxb_subset \
+      --extract mxb_subset_globanc.prune.in \
+      --make-bed \
+      --out mxb_subset_globanc.LDpruned
+
+
+###########################################
+# 2. Correr PCA con PLINK en datos LD-pruned
+###########################################
+
+# Ahora sí, correr PCA sobre el dataset sin LD fuerte
+# --pca 20                          : calcula las primeras 20 PCs
+# --out admixture                   : prefijo de salida (admixture.eigenvec / .eigenval)
+plink --bfile mxb_subset_globanc.LDpruned \
+      --pca 20 \
+      --out mxb_subset_globanc.pca
+</code>
+        </pre><pre class="code CodeMirror" data-line="197">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span><span class="CodeMirror-linenumber">4</span><span class="CodeMirror-linenumber">5</span><span class="CodeMirror-linenumber">6</span><span class="CodeMirror-linenumber">7</span><span class="CodeMirror-linenumber">8</span><span class="CodeMirror-linenumber">9</span><span class="CodeMirror-linenumber">10</span><span class="CodeMirror-linenumber">11</span><span class="CodeMirror-linenumber">12</span><span class="CodeMirror-linenumber">13</span><span class="CodeMirror-linenumber">14</span><span class="CodeMirror-linenumber">15</span><span class="CodeMirror-linenumber">16</span><span class="CodeMirror-linenumber">17</span><span class="CodeMirror-linenumber">18</span><span class="CodeMirror-linenumber">19</span><span class="CodeMirror-linenumber">20</span><span class="CodeMirror-linenumber">21</span><span class="CodeMirror-linenumber">22</span><span class="CodeMirror-linenumber">23</span><span class="CodeMirror-linenumber">24</span><span class="CodeMirror-linenumber">25</span><span class="CodeMirror-linenumber">26</span><span class="CodeMirror-linenumber">27</span><span class="CodeMirror-linenumber">28</span><span class="CodeMirror-linenumber">29</span><span class="CodeMirror-linenumber">30</span><span class="CodeMirror-linenumber">31</span><span class="CodeMirror-linenumber">32</span><span class="CodeMirror-linenumber">33</span><span class="CodeMirror-linenumber">34</span><span class="CodeMirror-linenumber">35</span><span class="CodeMirror-linenumber">36</span><span class="CodeMirror-linenumber">37</span><span class="CodeMirror-linenumber">38</span><span class="CodeMirror-linenumber">39</span><span class="CodeMirror-linenumber">40</span><span class="CodeMirror-linenumber">41</span><span class="CodeMirror-linenumber">42</span><span class="CodeMirror-linenumber">43</span><span class="CodeMirror-linenumber">44</span><span class="CodeMirror-linenumber">45</span><span class="CodeMirror-linenumber">46</span><span class="CodeMirror-linenumber">47</span><span class="CodeMirror-linenumber">48</span><span class="CodeMirror-linenumber">49</span><span class="CodeMirror-linenumber">50</span><span class="CodeMirror-linenumber">51</span><span class="CodeMirror-linenumber">52</span><span class="CodeMirror-linenumber">53</span><span class="CodeMirror-linenumber">54</span><span class="CodeMirror-linenumber">55</span><span class="CodeMirror-linenumber">56</span><span class="CodeMirror-linenumber">57</span><span class="CodeMirror-linenumber">58</span><span class="CodeMirror-linenumber">59</span><span class="CodeMirror-linenumber">60</span><span class="CodeMirror-linenumber">61</span><span class="CodeMirror-linenumber">62</span><span class="CodeMirror-linenumber">63</span><span class="CodeMirror-linenumber">64</span><span class="CodeMirror-linenumber">65</span><span class="CodeMirror-linenumber">66</span><span class="CodeMirror-linenumber">67</span><span class="CodeMirror-linenumber">68</span><span class="CodeMirror-linenumber">69</span><span class="CodeMirror-linenumber">70</span><span class="CodeMirror-linenumber">71</span><span class="CodeMirror-linenumber">72</span><span class="CodeMirror-linenumber">73</span><span class="CodeMirror-linenumber">74</span><span class="CodeMirror-linenumber">75</span><span class="CodeMirror-linenumber">76</span><span class="CodeMirror-linenumber">77</span><span class="CodeMirror-linenumber">78</span><span class="CodeMirror-linenumber">79</span><span class="CodeMirror-linenumber">80</span><span class="CodeMirror-linenumber">81</span><span class="CodeMirror-linenumber">82</span><span class="CodeMirror-linenumber">83</span><span class="CodeMirror-linenumber">84</span><span class="CodeMirror-linenumber">85</span><span class="CodeMirror-linenumber">86</span><span class="CodeMirror-linenumber">87</span><span class="CodeMirror-linenumber">88</span><span class="CodeMirror-linenumber">89</span><span class="CodeMirror-linenumber">90</span><span class="CodeMirror-linenumber">91</span><span class="CodeMirror-linenumber">92</span><span class="CodeMirror-linenumber">93</span><span class="CodeMirror-linenumber">94</span><span class="CodeMirror-linenumber">95</span><span class="CodeMirror-linenumber">96</span><span class="CodeMirror-linenumber">97</span><span class="CodeMirror-linenumber">98</span><span class="CodeMirror-linenumber">99</span><span class="CodeMirror-linenumber">100</span><span class="CodeMirror-linenumber">101</span><span class="CodeMirror-linenumber">102</span><span class="CodeMirror-linenumber">103</span><span class="CodeMirror-linenumber">104</span><span class="CodeMirror-linenumber">105</span><span class="CodeMirror-linenumber">106</span><span class="CodeMirror-linenumber">107</span><span class="CodeMirror-linenumber">108</span><span class="CodeMirror-linenumber">109</span><span class="CodeMirror-linenumber">110</span></span>
+          <code class="R">###############################
+# PCA de PLINK + metadata TSV #
+###############################
+
+# ---- 0) Entrar a R -----
+R
+
+# ---- 1) Cargar librerías necesarias ----
+library(tidyverse)
+
+# ---- 2) Definir nombres de archivos ----
+prefix &lt;- &quot;mxb_subset_globanc.pca&quot;  
+metadata_file &lt;- &quot;metadata_subset.tsv&quot;
+
+# ---- 3) Leer archivos de PCA generados por PLINK ----
+evec &lt;- read_table(
+  paste0(prefix, &quot;.eigenvec&quot;),
+  col_names = FALSE
+)
+
+eval &lt;- read_table(
+  paste0(prefix, &quot;.eigenval&quot;),
+  col_names = &quot;eigenval&quot;
+)
+
+colnames(evec) &lt;- c(&quot;FID&quot;, &quot;IID&quot;, paste0(&quot;PC&quot;, 1:(ncol(evec) - 2)))
+
+# % de varianza usando número de individuos
+n_ind   &lt;- nrow(evec)
+var_exp &lt;- 100 * eval$eigenval / n_ind
+
+# ---- 4) Leer tabla de metadata externa ----
+metadata &lt;- read_tsv(metadata_file)
+
+# ---- 5) Unir metadata al PCA usando el ID de la muestra ----
+evec_meta &lt;- evec %&gt;%
+  left_join(metadata, by = c(&quot;IID&quot; = &quot;SAMPLE_ID&quot;))
+
+# ---- 5.1 Definir orden de regiones y grupos México vs continentales ----
+reg_levels &lt;- c(
+  &quot;Africa&quot;, &quot;Asia&quot;, &quot;Europa&quot;,
+  &quot;Indigenas Americanos&quot;,
+  &quot;Norte de Mexico&quot;, &quot;Norte de Mesoamerica&quot;,
+  &quot;Occidente de Mexico&quot;, &quot;Centro de Mexico&quot;,
+  &quot;Golfo de Mexico&quot;, &quot;Oaxaca&quot;, &quot;Mayan region&quot;
+)
+
+evec_meta &lt;- evec_meta %&gt;%
+  mutate(
+    region = factor(region, levels = reg_levels),
+    # Un solo grupo para los continentales y uno distinto para cada región mexicana
+    shape_region = case_when(
+      region %in% c(&quot;Africa&quot;, &quot;Asia&quot;, &quot;Europa&quot;) ~ &quot;Continentes&quot;,
+      TRUE ~ as.character(region)
+    ),
+    shape_region = factor(shape_region)
+  )
+
+# ---- 5.2 Paleta de colores manual ----
+region_colors &lt;- c(
+  &quot;Africa&quot;               = &quot;#E64B35FF&quot;,
+  &quot;Asia&quot;                 = &quot;#4DBBD5FF&quot;,
+  &quot;Europa&quot;               = &quot;#00A087FF&quot;,
+  &quot;Indigenas Americanos&quot; = &quot;#3C5488FF&quot;,
+  &quot;Norte de Mexico&quot;      = &quot;#F39B7FFF&quot;,
+  &quot;Norte de Mesoamerica&quot; = &quot;#8491B4FF&quot;,
+  &quot;Occidente de Mexico&quot;  = &quot;#91D1C2FF&quot;,
+  &quot;Centro de Mexico&quot;     = &quot;#DC0000FF&quot;,
+  &quot;Golfo de Mexico&quot;      = &quot;#7E6148FF&quot;,
+  &quot;Oaxaca&quot;               = &quot;#B09C85FF&quot;,
+  &quot;Mayan region&quot;         = &quot;#F4A259FF&quot;
+)
+
+# ---- 5.3 Formas: una para continentes, varias para regiones de México ----
+shape_values &lt;- c(
+  &quot;Continentes&quot;          = 16,  # círculo
+  &quot;Indigenas Americanos&quot; = 17,  # triángulo
+  &quot;Norte de Mexico&quot;      = 15,  # cuadrado
+  &quot;Norte de Mesoamerica&quot; = 3,   # +
+  &quot;Occidente de Mexico&quot;  = 18,  # rombo
+  &quot;Centro de Mexico&quot;     = 8,   # estrella
+  &quot;Golfo de Mexico&quot;      = 4,   # X
+  &quot;Oaxaca&quot;               = 7,   # triángulo invertido
+  &quot;Mayan region&quot;         = 0    # cuadrado vacío
+)
+
+# ---- 6) Graficar PCA ----
+p &lt;- ggplot(evec_meta, aes(x = PC1, y = PC2)) +
+  geom_point(aes(color = region, shape = shape_region),
+             size = 2, alpha = 0.8) +
+  labs(
+    x = paste0(&quot;PC1 (&quot;, round(var_exp[1], 1), &quot;%)&quot;),
+    y = paste0(&quot;PC2 (&quot;, round(var_exp[2], 1), &quot;%)&quot;),
+    color = &quot;Región&quot;,
+    shape = &quot;Región (forma)&quot;,
+    title = &quot;PCA (coloreado por región)&quot;
+  ) +
+  scale_color_manual(values = region_colors, na.value = &quot;grey70&quot;) +
+  scale_shape_manual(values = shape_values) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 12),
+    legend.position = &quot;right&quot;
+  )
+
+# ---- 7) Guardar figura ----
+ggsave(&quot;PCA_region.png&quot;, p, width = 7, height = 6, dpi = 300)
+
+# Salir de R
+q()
+</code>
+        </pre><pre class="code CodeMirror" data-line="310">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span></span>
+          <code class="sh">##Revisamos que nuestra gráfica se haya guardado
+ls *png
+
+</code>
+        </pre><pre class="code CodeMirror" data-line="317">
+          <span class="filename"></span>
+          <span class="lineNumber CodeMirror-gutters"><span class="CodeMirror-linenumber">1</span><span class="CodeMirror-linenumber">2</span><span class="CodeMirror-linenumber">3</span><span class="CodeMirror-linenumber">4</span><span class="CodeMirror-linenumber">5</span><span class="CodeMirror-linenumber">6</span><span class="CodeMirror-linenumber">7</span><span class="CodeMirror-linenumber">8</span><span class="CodeMirror-linenumber">9</span><span class="CodeMirror-linenumber">10</span><span class="CodeMirror-linenumber">11</span><span class="CodeMirror-linenumber">12</span><span class="CodeMirror-linenumber">13</span><span class="CodeMirror-linenumber">14</span><span class="CodeMirror-linenumber">15</span><span class="CodeMirror-linenumber">16</span><span class="CodeMirror-linenumber">17</span><span class="CodeMirror-linenumber">18</span><span class="CodeMirror-linenumber">19</span><span class="CodeMirror-linenumber">20</span><span class="CodeMirror-linenumber">21</span><span class="CodeMirror-linenumber">22</span><span class="CodeMirror-linenumber">23</span><span class="CodeMirror-linenumber">24</span><span class="CodeMirror-linenumber">25</span><span class="CodeMirror-linenumber">26</span><span class="CodeMirror-linenumber">27</span><span class="CodeMirror-linenumber">28</span><span class="CodeMirror-linenumber">29</span><span class="CodeMirror-linenumber">30</span><span class="CodeMirror-linenumber">31</span><span class="CodeMirror-linenumber">32</span><span class="CodeMirror-linenumber">33</span><span class="CodeMirror-linenumber">34</span><span class="CodeMirror-linenumber">35</span><span class="CodeMirror-linenumber">36</span><span class="CodeMirror-linenumber">37</span><span class="CodeMirror-linenumber">38</span><span class="CodeMirror-linenumber">39</span><span class="CodeMirror-linenumber">40</span><span class="CodeMirror-linenumber">41</span><span class="CodeMirror-linenumber">42</span><span class="CodeMirror-linenumber">43</span><span class="CodeMirror-linenumber">44</span><span class="CodeMirror-linenumber">45</span><span class="CodeMirror-linenumber">46</span><span class="CodeMirror-linenumber">47</span><span class="CodeMirror-linenumber">48</span><span class="CodeMirror-linenumber">49</span><span class="CodeMirror-linenumber">50</span><span class="CodeMirror-linenumber">51</span><span class="CodeMirror-linenumber">52</span><span class="CodeMirror-linenumber">53</span><span class="CodeMirror-linenumber">54</span><span class="CodeMirror-linenumber">55</span><span class="CodeMirror-linenumber">56</span><span class="CodeMirror-linenumber">57</span><span class="CodeMirror-linenumber">58</span><span class="CodeMirror-linenumber">59</span><span class="CodeMirror-linenumber">60</span><span class="CodeMirror-linenumber">61</span><span class="CodeMirror-linenumber">62</span><span class="CodeMirror-linenumber">63</span><span class="CodeMirror-linenumber">64</span><span class="CodeMirror-linenumber">65</span><span class="CodeMirror-linenumber">66</span><span class="CodeMirror-linenumber">67</span><span class="CodeMirror-linenumber">68</span><span class="CodeMirror-linenumber">69</span><span class="CodeMirror-linenumber">70</span><span class="CodeMirror-linenumber">71</span><span class="CodeMirror-linenumber">72</span><span class="CodeMirror-linenumber">73</span></span>
+          <code class="sh">###########################################
+# 1. Preparar datos antes de ADMIXTURE
+#    (LD pruning + filtros)
+###########################################
+##Nos movemos a la carpeta principal
+cd ~
+
+##Nos movemos a la carpeta donde está nuestro dataset
+cd data
+
+# Este paso elimina SNPs en fuerte desequilibrio de ligamiento (LD),
+# lo que permite que ADMIXTURE use variantes más independientes entre sí.
+# Sintaxis:
+# --indep-pairwise &lt;ventana&gt; &lt;paso&gt; &lt;r2&gt;
+
+# 50 10 0.1 = examina ventanas de 50 SNPs,
+# avanza 10 SNPs por iteración y elimina SNPs con r^2 &gt; 0.1 (alto LD)
+plink --bfile mxb_subset --indep-pairwise 50 10 0.1 --out mxb_admx
+
+
+# Ahora creamos un nuevo dataset que contiene solo los SNPs no vinculados (pruned)
+# --extract usa el archivo .prune.in generado arriba
+# --make-bed genera nuevos archivos binarios
+# El resultado es un dataset reducido y más limpio para ADMIXTURE
+
+plink --bfile mxb_subset --extract mxb_admx.prune.in --make-bed --out mxb_admx.LDpruned
+
+
+###########################################
+# 2. Correr ADMIXTURE (varios K en paralelo)
+###########################################
+
+# Usamos un número aleatorio como semilla para reproducibilidad
+RANDOM=$SGE_TASK_ID
+echo $RANDOM
+SEED=`echo $RANDOM`
+
+# Corre ADMIXTURE con cross-validation (--cv)
+# -s SEED  = fija semilla
+# -jn  = usa n hilos en paralelo
+# mxb_admx.LDpruned.bed = dataset podado por LD
+date +&quot;%T&quot;
+#for K in {2..8}; do admixture -s $SEED --cv -j1 mxb_admx.LDpruned.bed $K | tee log${K}.out ; done
+date +&quot;%T&quot;
+##############################################
+# 1. Ir a la carpeta de resultados
+##############################################
+
+# Ir al directorio principal del usuario 
+cd ~
+
+# Entrar a la carpeta donde están los archivos generados por ADMIXTURE
+cd admixture
+
+# Listar todos los archivos .Q generados
+ls *Q
+
+# Ver las primeras líneas de cada archivo .Q para revisar formato
+# Cada fila = individuo
+# Cada columna = componente ancestral
+head *Q
+
+# Ver cómo está mapeado cada archivo Q 
+cat filemap
+
+# Ver primeras líneas del archivo que asigna individuos a poblaciones
+head mxb_admx.ind2pop
+
+### Visualizar resultados con PONG
+# -m filemap          → indica la relación entre archivos y K
+# -i mxb_admx.ind2pop → asigna etiquetas de población
+# -n pop_order        → orden en que aparecerán grupos en la visualización
+pong -m filemap -i mxb_admx.ind2pop -n pop_order
+</code>
+        </pre>
+</body>
+</html>

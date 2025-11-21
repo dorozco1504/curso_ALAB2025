@@ -1,0 +1,393 @@
+# Curso ALAB JC 2025
+
+### Recursos de consulta
+- Presentación del curso: [Curso MexVar ALAB - Juan Comas 2025 - Presentacion de Google](https://docs.google.com/presentation/d/1R2aMAzVmKdMf1yq4BMBx-PXvQX6_cM0Ezf8abr3Ecv0/edit?usp=sharing)
+- Repositorio guía: [GitHub - Curso_ALAB2025: Introducción](https://github.com/dorozco1504/curso_ALAB2025)
+
+## 📌 Objetivo 1: análisis de calidad a un dataset de genotipado
+
+
+```sh
+#Abrir aplicación Terminal y teclear
+conda activate popgen
+##Movernos al directorio donde están los datos 
+
+cd QC_data
+
+# Muestra las primeras 10 líneas del archivo .bim
+# .bim contiene la información por SNP: CHR, ID, POS_GENÉTICA, POS_FÍSICA, A1, A2
+head poptest.bim
+
+# .fam tiene 6 columnas: FID IID PADRE MADRE SEXO FENOTIPO
+head poptest.fam
+
+# Cuenta cuántas filas tiene .fam = número de muestras
+wc -l poptest.fam
+
+# Cuenta filas en .bim = número de variantes
+wc -l poptest.bim
+
+
+
+##############################
+# 1. Quitar SNPs problemáticos
+##############################
+
+# Buscar variantes duplicadas (mismo ID/posición) en el archivo binario poptest
+# --bfile poptest   : usa poptest.bed/.bim/.fam
+# --list-duplicate-vars : detecta variantes duplicadas
+# ids-only suppress-first : solo imprime los IDs y marca para eliminar la PRIMERA copia
+
+plink --bfile poptest --list-duplicate-vars ids-only suppress-first
+
+# Contar cuántas variantes duplicadas se encontraron
+wc -l plink.dupvar 
+
+# Eliminar las variantes duplicadas del dataset original y guardar como poptest.t1
+# --exclude plink.dupvar : lista de SNPs a excluir
+# --make-bed             : genera nuevos .bed/.bim/.fam
+# --out poptest.t1       : prefijo del nuevo archivo
+plink --bfile poptest --exclude plink.dupvar --make-bed --out poptest.t1
+
+# Identificar INDELs (inserciones/deleciones) en el archivo .bim
+# En el .bim, las columnas 5 y 6 son los alelos.
+# Aquí buscamos alelos con I o D (I = insertion, D = deletion)
+# y nos quedamos con la columna 2 (ID del SNP) para hacer una lista.
+awk '$5 ~/I/ || $5 ~/D/ || $6 ~/I/ || $6 ~/D/ ' poptest.t1.bim | cut -f2 > indels.txt
+
+# Contar cuántos INDELs se van a eliminar
+wc -l indels.txt 
+
+# Eliminar INDELs del dataset y guardar como poptest.t2
+plink --bfile poptest.t1 --exclude indels.txt --make-bed --out poptest.t2
+
+####################################
+# 2. Missingness y heterocigosidad
+####################################
+
+# Calcular missingness (por individuo y por SNP) para poptest.t2
+# Esto genera archivos .imiss (por individuo) y .lmiss (por SNP)
+plink --bfile poptest.t2 --missing --out poptest.t2
+
+# Calcular tasa de heterocigosidad por individuo
+# Esto genera archivo .het
+plink --bfile poptest.t2 --het --out poptest.t2
+
+# Crear carpeta para guardar los gráficos de QC
+mkdir QCplots
+
+# Correr script de R que hace las gráficas de QC
+# Argumentos: <prefix PLINK> <etapa> <nombre del dataset>
+# Aquí: usamos poptest.t2, etapa "pre" (antes de filtros fuertes) y nombre "Test"
+Rscript missingness_qcplots_v3.R poptest.t2 pre Test
+
+####Enlistar los plots que se generaron
+
+ls QCplots/
+
+##################################
+# 3. Relacionados (IBD/parentesco)
+##################################
+
+# Calcula matriz de IBD (identical by descent) entre pares de individuos
+# Esto estima cuánto material genético comparte cada par → útil para detectar parientes.
+plink --bfile poptest.t2 --genome --out poptest.t2
+
+# Este script en Perl toma el archivo poptest.t2.genome
+# y aplica los criterios del paper de Anderson et al. (2010)
+# para detectar individuos con parentesco cercano (e.g., PI_HAT > 0.5)
+# El resultado es un archivo fail-IBD-QC.txt con individuos a eliminar.
+perl run-IBD-QC_mod82316.pl poptest.t2
+
+# Contar cuántos individuos serán removidos por ser parientes cercanos
+wc -l fail-IBD-QC.txt 
+
+# Remover los individuos identificados como parientes
+# Esto ayuda a evitar sesgos en PCA, ADMIXTURE y estimaciones de diversidad.
+plink --bfile poptest.t2 --remove fail-IBD-QC.txt --make-bed --out poptest.t3
+
+########################################
+# 4. Filtros estándar de calidad (QC)
+########################################
+
+# Aplicar filtros de:
+# --mind 0.1 : elimina individuos con >10% de genotipos faltantes
+# --geno 0.05: elimina SNPs con >5% de genotipos faltantes
+plink --bfile poptest.t3 --mind 0.1 --geno 0.05 --make-bed --out poptest.t4
+
+# Filtrar SNPs que violan Hardy-Weinberg:
+# --hwe 1e-5 : elimina SNPs con p(HWE) < 1x10^-5 (posibles errores de genotipado)
+plink --bfile poptest.t4 --hwe 1e-5 --make-bed --out poptest.final 
+
+###############################################
+# 5. Quedarse solo con autosomas y revisar QC
+###############################################
+
+# Conservar solo cromosomas autosómicos (1–22)
+plink --bfile poptest.final --autosome --make-bed --out poptest.final.autosomes
+
+# Recalcular heterocigosidad en autosomas
+plink --bfile poptest.final.autosomes --het --out poptest.final.autosomes
+
+# Recalcular missingness en autosomas
+plink --bfile poptest.final.autosomes --missing --out poptest.final.autosomes
+
+# Correr de nuevo el script de R para hacer las gráficas de QC
+# Ahora etapa "Post" (después de filtros) y nombre "Test"
+Rscript missingness_qcplots_v3.R poptest.final.autosomes Post Test
+
+####Enlistar los plots que se generaron
+
+ls QCplots/
+
+
+```
+## 📌 Objetivo 2: análisis de ancestría global con PCA y ADMIXTURE
+
+#### PCA con PLINK + Metadata externa (.tsv)
+
+```sh
+# Movernos al directorio principal y movernos al directorio con datos a analizar
+cd ~
+cd data
+# Ver las primeras filas de la tabla de metadata (TSV)
+# Esto te permite revisar qué columnas existen, cómo se llaman y si los IDs
+# de individuos coinciden con los del archivo PLINK (.fam / .eigenvec)
+head metadata_subset.tsv
+```
+
+#### 🧬Correr PCA en PLINK (antes de graficar en R)
+```sh
+
+###########################################
+# 1. LD pruning antes del PCA
+###########################################
+
+# Paso 1: Identificar SNPs independientes en términos de LD
+# --bfile mxb_subset  : dataset de interes con el biobanco y poblacionescontinentales
+# --indep-pairwise 50 10 0.1       : ventana de 50 SNPs, se mueve de 10 en 10,
+#                                    y elimina SNPs con r^2 > 0.1 (alto LD)
+# --out mxb_subset_globanc                 : prefijo para los archivos .prune.in / .prune.out
+plink --bfile mxb_subset \
+      --indep-pairwise 50 10 0.1 \
+      --out mxb_subset_globanc
+
+# Paso 2: Crear un nuevo dataset que solo contenga los SNPs “pruned”
+# (más independientes entre sí, ideal para PCA)
+# --extract mxb_subset_globanc.prune.in    : lista de SNPs que se conservan
+# --make-bed                        : genera nuevos .bed/.bim/.fam
+# --out mxb_subset_globanc.LDpruned : nombre del nuevo dataset reducido
+plink --bfile mxb_subset \
+      --extract mxb_subset_globanc.prune.in \
+      --make-bed \
+      --out mxb_subset_globanc.LDpruned
+
+
+###########################################
+# 2. Correr PCA con PLINK en datos LD-pruned
+###########################################
+
+# Ahora sí, correr PCA sobre el dataset sin LD fuerte
+# --pca 20                          : calcula las primeras 20 PCs
+# --out admixture                   : prefijo de salida (admixture.eigenvec / .eigenval)
+plink --bfile mxb_subset_globanc.LDpruned \
+      --pca 20 \
+      --out mxb_subset_globanc.pca
+```
+
+```R
+###############################
+# PCA de PLINK + metadata TSV #
+###############################
+
+# ---- 0) Entrar a R -----
+R
+
+# ---- 1) Cargar librerías necesarias ----
+library(tidyverse)
+
+# ---- 2) Definir nombres de archivos ----
+prefix <- "mxb_subset_globanc.pca"  
+metadata_file <- "metadata_subset.tsv"
+
+# ---- 3) Leer archivos de PCA generados por PLINK ----
+evec <- read_table(
+  paste0(prefix, ".eigenvec"),
+  col_names = FALSE
+)
+
+eval <- read_table(
+  paste0(prefix, ".eigenval"),
+  col_names = "eigenval"
+)
+
+colnames(evec) <- c("FID", "IID", paste0("PC", 1:(ncol(evec) - 2)))
+
+# % de varianza usando número de individuos
+n_ind   <- nrow(evec)
+var_exp <- 100 * eval$eigenval / n_ind
+
+# ---- 4) Leer tabla de metadata externa ----
+metadata <- read_tsv(metadata_file)
+
+# ---- 5) Unir metadata al PCA usando el ID de la muestra ----
+evec_meta <- evec %>%
+  left_join(metadata, by = c("IID" = "SAMPLE_ID"))
+
+# ---- 5.1 Definir orden de regiones y grupos México vs continentales ----
+reg_levels <- c(
+  "Africa", "Asia", "Europa",
+  "Indigenas Americanos",
+  "Norte de Mexico", "Norte de Mesoamerica",
+  "Occidente de Mexico", "Centro de Mexico",
+  "Golfo de Mexico", "Oaxaca", "Mayan region"
+)
+
+evec_meta <- evec_meta %>%
+  mutate(
+    region = factor(region, levels = reg_levels),
+    # Un solo grupo para los continentales y uno distinto para cada región mexicana
+    shape_region = case_when(
+      region %in% c("Africa", "Asia", "Europa") ~ "Continentes",
+      TRUE ~ as.character(region)
+    ),
+    shape_region = factor(shape_region)
+  )
+
+# ---- 5.2 Paleta de colores manual ----
+region_colors <- c(
+  "Africa"               = "#E64B35FF",
+  "Asia"                 = "#4DBBD5FF",
+  "Europa"               = "#00A087FF",
+  "Indigenas Americanos" = "#3C5488FF",
+  "Norte de Mexico"      = "#F39B7FFF",
+  "Norte de Mesoamerica" = "#8491B4FF",
+  "Occidente de Mexico"  = "#91D1C2FF",
+  "Centro de Mexico"     = "#DC0000FF",
+  "Golfo de Mexico"      = "#7E6148FF",
+  "Oaxaca"               = "#B09C85FF",
+  "Mayan region"         = "#F4A259FF"
+)
+
+# ---- 5.3 Formas: una para continentes, varias para regiones de México ----
+shape_values <- c(
+  "Continentes"          = 16,  # círculo
+  "Indigenas Americanos" = 17,  # triángulo
+  "Norte de Mexico"      = 15,  # cuadrado
+  "Norte de Mesoamerica" = 3,   # +
+  "Occidente de Mexico"  = 18,  # rombo
+  "Centro de Mexico"     = 8,   # estrella
+  "Golfo de Mexico"      = 4,   # X
+  "Oaxaca"               = 7,   # triángulo invertido
+  "Mayan region"         = 0    # cuadrado vacío
+)
+
+# ---- 6) Graficar PCA ----
+p <- ggplot(evec_meta, aes(x = PC1, y = PC2)) +
+  geom_point(aes(color = region, shape = shape_region),
+             size = 2, alpha = 0.8) +
+  labs(
+    x = paste0("PC1 (", round(var_exp[1], 1), "%)"),
+    y = paste0("PC2 (", round(var_exp[2], 1), "%)"),
+    color = "Región",
+    shape = "Región (forma)",
+    title = "PCA (coloreado por región)"
+  ) +
+  scale_color_manual(values = region_colors, na.value = "grey70") +
+  scale_shape_manual(values = shape_values) +
+  theme_classic() +
+  theme(
+    text = element_text(size = 12),
+    legend.position = "right"
+  )
+
+# ---- 7) Guardar figura ----
+ggsave("PCA_region.png", p, width = 7, height = 6, dpi = 300)
+
+# Salir de R
+q()
+```
+
+```sh
+##Revisamos que nuestra gráfica se haya guardado
+ls *png
+
+```
+
+
+``` sh
+###########################################
+# 1. Preparar datos antes de ADMIXTURE
+#    (LD pruning + filtros)
+###########################################
+##Nos movemos a la carpeta principal
+cd ~
+
+##Nos movemos a la carpeta donde está nuestro dataset
+cd data
+
+# Este paso elimina SNPs en fuerte desequilibrio de ligamiento (LD),
+# lo que permite que ADMIXTURE use variantes más independientes entre sí.
+# Sintaxis:
+# --indep-pairwise <ventana> <paso> <r2>
+
+# 50 10 0.1 = examina ventanas de 50 SNPs,
+# avanza 10 SNPs por iteración y elimina SNPs con r^2 > 0.1 (alto LD)
+plink --bfile mxb_subset --indep-pairwise 50 10 0.1 --out mxb_admx
+
+
+# Ahora creamos un nuevo dataset que contiene solo los SNPs no vinculados (pruned)
+# --extract usa el archivo .prune.in generado arriba
+# --make-bed genera nuevos archivos binarios
+# El resultado es un dataset reducido y más limpio para ADMIXTURE
+
+plink --bfile mxb_subset --extract mxb_admx.prune.in --make-bed --out mxb_admx.LDpruned
+
+
+###########################################
+# 2. Correr ADMIXTURE (varios K en paralelo)
+###########################################
+
+# Usamos un número aleatorio como semilla para reproducibilidad
+RANDOM=$SGE_TASK_ID
+echo $RANDOM
+SEED=`echo $RANDOM`
+
+# Corre ADMIXTURE con cross-validation (--cv)
+# -s SEED  = fija semilla
+# -jn  = usa n hilos en paralelo
+# mxb_admx.LDpruned.bed = dataset podado por LD
+date +"%T"
+#for K in {2..8}; do admixture -s $SEED --cv -j1 mxb_admx.LDpruned.bed $K | tee log${K}.out ; done
+date +"%T"
+##############################################
+# 1. Ir a la carpeta de resultados
+##############################################
+
+# Ir al directorio principal del usuario 
+cd ~
+
+# Entrar a la carpeta donde están los archivos generados por ADMIXTURE
+cd admixture
+
+# Listar todos los archivos .Q generados
+ls *Q
+
+# Ver las primeras líneas de cada archivo .Q para revisar formato
+# Cada fila = individuo
+# Cada columna = componente ancestral
+head *Q
+
+# Ver cómo está mapeado cada archivo Q 
+cat filemap
+
+# Ver primeras líneas del archivo que asigna individuos a poblaciones
+head mxb_admx.ind2pop
+
+### Visualizar resultados con PONG
+# -m filemap          → indica la relación entre archivos y K
+# -i mxb_admx.ind2pop → asigna etiquetas de población
+# -n pop_order        → orden en que aparecerán grupos en la visualización
+pong -m filemap -i mxb_admx.ind2pop -n pop_order
+``` 
+
